@@ -1,5 +1,9 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import AddUserClickContextProvider from '@/contexts/AddUserClickContext'
+import AddUserContextProvider from '@/contexts/AddUserContext'
+import AuthProvider from '@/components/AuthProvider'
+import ProtectedRoute from '@/components/ProtectedRoute'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,8 +14,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <AuthProvider>
+      <ProtectedRoute>
+    <AddUserClickContextProvider>
+      <AddUserContextProvider>
+        <html lang="en">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </AddUserContextProvider>
+    </AddUserClickContextProvider>
+    </ProtectedRoute>
+    </AuthProvider>
   )
 }
