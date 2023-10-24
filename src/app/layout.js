@@ -14,8 +14,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
-      <ProtectedRoute>
+    <ProtectedRoute>
+      <AuthProvider>
         <AddUserClickContextProvider>
           <AddUserContextProvider>
             <html lang="en">
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
             </html>
           </AddUserContextProvider>
         </AddUserClickContextProvider>
-      </ProtectedRoute>
-    </AuthProvider>
+      </AuthProvider>
+    </ProtectedRoute>
   )
 }
